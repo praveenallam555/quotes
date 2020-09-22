@@ -1,0 +1,15 @@
+
+.main-content {
+    padding: 1rem;
+    color: #e3e3e3;
+    /* background-color: #e3e3e3; */
+}
+.quotes-input-display-divider {
+    margin-top: 2rem;
+    height: 2rem;
+    box-shadow: 0px -8px 9px -10px black;
+    -moz-box-shadow: 0px -8px 9px -10px black;
+    -webkit-box-shadow: 0px -8px 9px -10px black;
+}
+
+/* rgb(251 255 0) */

@@ -1,0 +1,48 @@
+<section class="quotes-display-section">
+  <div class="quotes-holder">
+    <mat-card
+      class="quotes-holder-item"
+      *ngFor="let quote of quotes; let i=index"
+    >
+      <mat-card-header>
+        <img mat-card-avatar [src]="quote.photoURL" />
+        <mat-card-title>{{quote.author}}</mat-card-title>
+        <mat-card-subtitle>
+          <span style="font-size: 0.7rem;">
+            {{quote.date | date: 'dd MMM yy hh:MM' | uppercase }}</span
+          >
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{quote.content}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="card-actions">
+          <span
+            class="material-icons matIcons"
+            (click)="toggleFavorite(quote,i)"
+            [ngClass]="{'favorite': quote.userFavorite,
+               'not-favorite': !quote.userFavorite}"
+            matRipple
+            [matRippleRadius]="20"
+            [matRippleCentered]="true"
+            >favorite
+          </span>
+          <span *ngIf="quote.favoriteCount > 0" clas="favorite-count"> {{quote.favoriteCount}}</span>
+          <span
+            class="material-icons matIcons removeIcon"
+            (click)="deleteQuote(quote.id)"
+            matRipple
+            [matRippleCentered]="true"
+            [matRippleRadius]="15"
+            *ngIf="quote.uid === currentUser.uid"
+          >
+            remove_circle_outline
+          </span>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+.quotes-input__holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.quotes-input {
+    margin-top: 1rem;
+    width: 60%;
+}

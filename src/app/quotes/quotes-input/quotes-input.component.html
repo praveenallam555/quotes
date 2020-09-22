@@ -1,0 +1,8 @@
+<div class="quotes-input__holder">
+    <mat-form-field class="quotes-input">
+        <mat-label>Enter Quote</mat-label>
+        <input matInput (keydown.enter)="saveQuote()" 
+        placeholder="Start typing to influence.."
+        [(ngModel)] ="textValue">
+    </mat-form-field>
+</div>

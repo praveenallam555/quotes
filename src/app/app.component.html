@@ -1,0 +1,21 @@
+<div class="menu-bar">
+    <div class="app-title">
+        <span class="app-title-primary">Quotes</span>
+        <span class="app-title-caption">That change your life...</span>
+    </div>
+    <div class="menu-bar-right">
+        <div class="menu-bar-profile" *ngIf="auth.user$ | async as user; else login">
+            <img mat-card-avatar class="menu-bar-profile-pic" [src]="user.photoURL" />
+            <button mat-raised-button
+            (click)="auth.signout()">Sign Out</button>
+        </div>
+        
+        <ng-template  #login>
+            <button mat-raised-button 
+            (click)="auth.googleSignOn()">Sign In</button>
+        </ng-template>
+    </div>
+</div>
+<app-quotes *ngIf="auth.user$ | async as user"></app-quotes>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,53 @@
+.quotes-display-section {
+  padding: 1rem;
+}
+
+.quotes-holder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.5rem;
+}
+
+.quotes-holder-item-profile {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+.favorite {
+  color: red;
+}
+.favorite:hover {
+  color: #e3e3e3;
+}
+.not-favorite {
+  color: #e3e3e3;
+}
+.not-favorite:hover {
+  color: red;
+}
+
+.matIcons {
+  padding: 0.2rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.matIcons:hover {
+  transform: scale(1.1);
+}
+
+.removeIcon {
+  color: red;
+  margin-left: auto;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.favorite-count {
+  color: aliceblue;
+  font-size: 0.4rem;
+}
