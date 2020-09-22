@@ -98,13 +98,11 @@ export class QuotesService {
 
   toggleFavorite(quote:Quote) :Promise<any>{
     if(quote.userFavorite) {
-      console.log(quote, 'removing favorite');
       this.db.collection('quotes').doc(quote.id).set({favoriteCount: quote.favoriteCount - 1}, {merge: true});
        return this.db.collection('userLikedQuotes').doc(this.currentUser.uid).update({
         likedQuotes: firebase.firestore.FieldValue.arrayRemove(quote.id)
       });
     } else {
-      console.log(quote, 'aadding favorite');
       this.db.collection('quotes').doc(quote.id).set({ favoriteCount: quote.favoriteCount + 1}, {merge: true});
       return this.db.collection('userLikedQuotes').doc(this.currentUser.uid).set({
         id: this.currentUser.uid, likedQuotes: firebase.firestore.FieldValue.arrayUnion(quote.id)
