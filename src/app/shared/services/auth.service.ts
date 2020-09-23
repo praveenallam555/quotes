@@ -6,6 +6,7 @@ import { User } from '../models/user.model';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   user$: Observable<any>;
   constructor(private afAuth: AngularFireAuth, 
     private afs: AngularFirestore, 
-    private router: Router) { 
+    private router: Router, private _snackBar: MatSnackBar) { 
       this.user$ = this.afAuth.authState.pipe(
         switchMap(user => {
           if(user) {
@@ -51,4 +52,31 @@ export class AuthService {
 
       return userRef.set(data, { merge: true});
   }
+
+  async loginWithEmail(name: string, email: string, password: string) {
+    await this.afAuth.auth.signInWithEmailAndPassword(email, password).then((data:any)=> {
+      this._snackBar.open('Logged In!')
+      console.log('success login with email', data);
+      let userData = {uid: data.user.uid, email: data.user.email, displayName: name, photoURL: null };
+      console.log('setting user data', userData);
+      this.updateUserData(userData)
+    }).catch((data:any) => {
+      this._snackBar.open('Error in login, Please try again', null, {duration: 5000});
+    })
+    //this.router.navigate(['admin/list']);
+  }
+
+  async registerWithEmail(email: string, password: string) {
+    return await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+    //this.sendEmailVerification();
+  }
+
+  async sendEmailVerification() {
+    return await this.afAuth.auth.currentUser.sendEmailVerification();
+  }
+
+  async sendPasswordResetEmail(passwordResetEmail: string) {
+    return await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+  }
+
 }

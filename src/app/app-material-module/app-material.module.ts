@@ -6,6 +6,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -17,7 +19,9 @@ import { NgModule } from '@angular/core';
     MatInputModule,
     MatSliderModule,
     MatCardModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDialogModule,
+    MatSnackBarModule
   ]
 })
 export class AppMaterialModule {}

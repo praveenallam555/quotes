@@ -15,12 +15,16 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './shared/services/auth.service';
+import { LoginManualComponent } from './login-manual/login-manual.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
     QuotesComponent,
     QuotesInputComponent,
-    QuotesDisplayComponent
+    QuotesDisplayComponent,
+    LoginManualComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ import { AuthService } from './shared/services/auth.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

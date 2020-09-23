@@ -1,0 +1,46 @@
+.login-container {
+    /* background: rgb(12 95 255 / 63%); */
+}
+
+.login-title {
+    color: rgb(0, 162, 255);
+}
+
+.register-title {
+    color: rgb(247, 204, 10);
+}
+
+.register {
+    display: flex;
+    width: 100%;
+}
+
+.register-text-holder {
+    margin-left: auto;
+    display: flex;
+}
+.register-text {
+    margin-left: 0.2rem;
+    color: 0.5rem;
+    color: rgb(247, 204, 10);
+    cursor: pointer;
+}
+
+.forgot-password-text {
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.login-actions {
+    display: flex;
+    width: 100%;
+}
+
+.login-action {
+    width: 50%;
+}
+
+.manual-login-field {
+    width: 100%;
+    padding: 1rem 0rem;
+}

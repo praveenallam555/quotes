@@ -1,0 +1,63 @@
+<div class="login-container">
+  <mat-dialog-content>
+    <mat-card-title>
+      <p *ngIf="login" class="login-title">Login</p>
+      <p *ngIf="!login" class="register-title">Register</p>
+    </mat-card-title>
+    <mat-form-field *ngIf="!login" class="manual-login-field">
+      <mat-label>User Namel</mat-label>
+      <input matInput [formControl]="nameFormControl" />
+      <mat-error *ngIf="nameFormControl.errors">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="manual-login-field">
+      <mat-label>ID/Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" />
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="manual-login-field">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput [formControl]="passwordFormControl" />
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div class="register" >
+      <div class="register-text-holder">
+        <p class="register-text" *ngIf="login"
+         (click)="login = !login">Register</p>
+        <p class="register-text" *ngIf="!login" (click)="login = !login">Login</p> 
+        <p class="forgot-password-text" (click)="!(emailFormControl.errors) && forgotPassword()">Forgot password?</p>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="login-actions">
+      <button
+        color="primary"
+        mat-raised-button
+        class="login-action"
+        [disabled]= "emailFormControl.errors || passwordFormControl.errors"
+        (click)="loginOrRegister()"
+        cdkFocusInitial
+      >
+        <span *ngIf="login">LOGIN</span>
+        <span *ngIf="!login">REGISTER</span>
+      </button>
+      <button
+        color="warn"
+        mat-raised-button
+        class="login-action"
+        (click)="cancel()"
+      >
+        CANCEL
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

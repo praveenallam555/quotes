@@ -18,7 +18,7 @@ export class QuotesService {
   constructor(private db: AngularFirestore, private authService:AuthService) { 
     this.authService.user$.subscribe((data:User) => {
       this.currentUser = data;
-      if(this.currentUser.uid) {
+      if(this.currentUser && this.currentUser.uid) {
         this.initiateEvents();
       }
     });

@@ -5,7 +5,8 @@
       *ngFor="let quote of quotes; let i=index"
     >
       <mat-card-header>
-        <img mat-card-avatar [src]="quote.photoURL" />
+        <img mat-card-avatar [src]="quote.photoURL" *ngIf="quote.photoURL"/>
+        <img mat-card-avatar src="../../../assets/img/default_user.png" *ngIf="!quote.photoURL"/>
         <mat-card-title>{{quote.author}}</mat-card-title>
         <mat-card-subtitle>
           <span style="font-size: 0.7rem;">

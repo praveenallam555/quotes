@@ -45,3 +45,12 @@
     font-family: cursive;
     letter-spacing: 0.1rem;
 }
+
+.login-icons-holder {
+    display: flex;
+    align-items: center;
+}
+
+.login-icon {
+    margin-right: 0.5rem;
+}
