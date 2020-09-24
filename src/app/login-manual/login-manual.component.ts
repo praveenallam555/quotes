@@ -46,32 +46,22 @@ export class LoginManualComponent implements OnInit {
 
   loginOrRegister() {
     if(this.login) {
-      this.auth.loginWithEmail(this.nameFormControl.value, this.emailFormControl.value, this.passwordFormControl.value);
-
+      this.auth.loginWithEmail(this.emailFormControl.value, this.passwordFormControl.value);
     } else {
-      this.auth.registerWithEmail(this.emailFormControl.value, this.passwordFormControl.value).then((data:any)=> {
-        console.log("register success", data);
-        this._snackBar.open('Register Success!', null, {duration: 5000});
-        this.login = true;
-      }).catch((reason)=>{
-        this._snackBar.open(reason.message, null, {duration: 5000});
-      })
+      this.auth.registerWithEmail(this.nameFormControl.value, this.emailFormControl.value, this.passwordFormControl.value);
     }
     this.resetForm();
     
   }
 
   forgotPassword() {
-    this.auth.sendPasswordResetEmail(this.emailFormControl.value).then((data:any) => {
-      console.log("password reset sent");
-      this.resetForm();
-      this._snackBar.open('Password reset Email Sent!!', null, {duration: 5000});
-    })
+    this.auth.sendPasswordResetEmail(this.emailFormControl.value);
+    this.resetForm();
   }
 
   resetForm() {
-    this.nameFormControl.setValue('');
-    this.emailFormControl.setValue('');
-    this.passwordFormControl.setValue('');
+    this.nameFormControl.reset();
+    this.emailFormControl.reset();
+    this.passwordFormControl.reset();
   }
 }

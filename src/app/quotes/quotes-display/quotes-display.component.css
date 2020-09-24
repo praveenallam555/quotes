@@ -51,3 +51,9 @@
   color: aliceblue;
   font-size: 0.4rem;
 }
+
+.quotes-holder-item-aligned {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 65px auto 50px;
+}

@@ -7,5 +7,5 @@ export interface Quote {
     photoURL: string;
     uid: string;
     userFavorite?:boolean;
-    userFavoriteData?: any;
+    doNotShow?:boolean;
 }

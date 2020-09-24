@@ -49,25 +49,29 @@ export class AuthService {
         displayName,
         photoURL
       };
-
       return userRef.set(data, { merge: true});
   }
 
-  async loginWithEmail(name: string, email: string, password: string) {
+  async loginWithEmail( email: string, password: string) {
     await this.afAuth.auth.signInWithEmailAndPassword(email, password).then((data:any)=> {
-      this._snackBar.open('Logged In!')
+      this._snackBar.open('Logged In!', null, { duration:2000});
       console.log('success login with email', data);
-      let userData = {uid: data.user.uid, email: data.user.email, displayName: name, photoURL: null };
+      let userData = {uid: data.user.uid, email: data.user.email, displayName: data.user.displayName, photoURL: null };
       console.log('setting user data', userData);
-      this.updateUserData(userData)
-    }).catch((data:any) => {
-      this._snackBar.open('Error in login, Please try again', null, {duration: 5000});
+      this.updateUserData(userData);
+    }).catch((error:any) => {
+      this._snackBar.open(error.message, null, {duration: 5000});
     })
     //this.router.navigate(['admin/list']);
   }
 
-  async registerWithEmail(email: string, password: string) {
-    return await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+  async registerWithEmail(name:string, email: string, password: string) {
+    this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((data:any) => {
+      let userData = {uid: data.user.uid, email: data.user.email, displayName: name, photoURL: null };
+      console.log('setting user data/register', userData);
+      this.updateUserData(userData);
+    })
+    //TODO://
     //this.sendEmailVerification();
   }
 
@@ -76,7 +80,11 @@ export class AuthService {
   }
 
   async sendPasswordResetEmail(passwordResetEmail: string) {
-    return await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+     this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail).then((data:any) =>{
+      this._snackBar.open('Reset Email sent', null, {duration: 5000});
+     }).catch((error: any ) => {
+      this._snackBar.open(error.message, null, {duration: 5000});
+     });
   }
 
 }
