@@ -57,3 +57,10 @@
   height: 100%;
   grid-template-rows: 65px auto 50px;
 }
+
+.quotes-holder-item:nth-child(6n+1) { background: rgb(141, 96 , 96)}
+.quotes-holder-item:nth-child(6n+2) { background: rgb(134, 141, 96);}
+.quotes-holder-item:nth-child(6n+3) {background: rgb(130, 96, 141);;}
+.quotes-holder-item:nth-child(6n+4) {background: rgb(96, 116, 141);}
+.quotes-holder-item:nth-child(6n+5) { background: rgb(82, 114, 88);}
+.quotes-holder-item:nth-child(6n) { background: rgb(96, 132, 141);}
