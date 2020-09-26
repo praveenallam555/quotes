@@ -4,17 +4,16 @@
     <span class="app-title-caption">That change your life...</span>
   </div>
   <div class="menu-bar-right">
-    <div
-      class="menu-bar-profile"
+    <div class="menu-bar-profile"
       *ngIf="auth.user$ | async as user; else login"
     >
       <img mat-card-avatar class="menu-bar-profile-pic" [src]="user.photoURL" *ngIf="user.photoURL" />
       <img mat-card-avatar class="menu-bar-profile-pic" src="../assets/img/current_default_user.png"  *ngIf="!user.photoURL"/>
-      <button mat-raised-button (click)="auth.signout()">Sign Out</button>
+      <button mat-button color="warn" (click)="auth.signout()" class="log-actions-out">Sign Out</button>
     </div>
 
     <ng-template #login>
-      <button [matMenuTriggerFor]="menu" mat-raised-button>Sign In</button>
+      <button [matMenuTriggerFor]="menu" mat-button color="accent" >Sign In</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="auth.googleSignOn()">
           <div class="login-icons-holder">

@@ -5,7 +5,7 @@
       <p *ngIf="!login" class="register-title">Register</p>
     </mat-card-title>
     <mat-form-field *ngIf="!login" class="manual-login-field">
-      <mat-label>User Namel</mat-label>
+      <mat-label>User Name</mat-label>
       <input matInput [formControl]="nameFormControl" />
       <mat-error *ngIf="nameFormControl.errors">
         Name is <strong>required</strong>

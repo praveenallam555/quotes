@@ -4,21 +4,24 @@
     align-items: center;
     justify-content: center;
     padding: 15px;
+    position: relative;
 }
     
 .menu-bar-right {
+    padding-right: 20px;
+    position: absolute;
+    right: 0;
     display: flex;
-    min-width: 100px;
-    width: 10%;
 }
 
 .menu-bar-profile {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 .menu-bar-profile-pic {
-    margin-right: 0.2rem;
-    max-height: 2.5rem;
+    height: 32px;
+    width: 32px;
 }
 
 .app-title {
@@ -27,7 +30,6 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    width: 90%;
 }
 
 .app-title-primary {
@@ -53,4 +55,8 @@
 
 .login-icon {
     margin-right: 0.5rem;
+}
+
+.log-actions-out {
+    line-height: 20px;
 }
